@@ -19,17 +19,30 @@ function whichAnimationEvent() {
 var animationEvent = whichAnimationEvent();
 
 $(document).ready(function () {
-    $('.line6').addClass("animate");
-    $('.animate').one(animationEvent,
-        async function () {
-            await $('.loadercontainer').css('animation', 'rmvloader 0.5s ease')
-            $('.loadercontainer').css('top', '-2000px')
-            var typed = new Typed(".text-slider", {
-                strings: ['UX Designing', 'App Development', "Fullstack Development", "Backend Development"],
-                typeSpeed: 50,
-                loop: true,
-                backDelay: 1200,
-                backSpeed: 30,
+    if (!sessionStorage.getItem('shown')) {
+        $('.line6').addClass("animate");
+        $('.animate').one(animationEvent,
+            async function () {
+                sessionStorage.setItem('shown', true);
+                await $('.loadercontainer').css('animation', 'rmvloader 0.5s ease')
+                $('.loadercontainer').css('top', '-2000px')
+                sessionStorage.setItem('shown', true);
             });
-        });
+    } else {
+        $('.loadercontainer').css('display', 'none')
+    }
+    var typed = new Typed(".text-slider", {
+        strings: ['UX Designing', 'App Development', "Fullstack Development", "Backend Development"],
+        typeSpeed: 50,
+        loop: true,
+        backDelay: 1200,
+        backSpeed: 30,
+    });
 });
+
+window.onbeforeunload = function (e) {
+    window.onunload = function () {
+            window.localStorage.clear()
+    }
+    return undefined;
+};

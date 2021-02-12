@@ -110,6 +110,69 @@ body {
   width: 100%;
   padding: 0 10px;
 }
+.container {
+  /* margin: 0 !important; */
+  margin-top: 100px !important;
+}
+.tab-btns {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-90px);
+}
+.tab-btns .tabs {
+  position: absolute;
+  font-size: 25px;
+  background-color: grey;
+  padding: 2px 7px;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  inline-size: max-content;
+}
+.about {
+  left: -75px;
+  transition: left 0.5s;
+}
+.skill {
+  top: 75px;
+  left: -62px;
+  transition: left 0.5s;
+}
+.award {
+  top: 150px;
+  left: -92px;
+  transition: left 0.5s;
+}
+.award:hover,
+.skill:hover,
+.about:hover {
+  left: 0;
+}
+.award img {
+  margin-left: 10px;
+}
+/* skillz */
+.skill-row > h5 {
+  display: inline-block;
+  vertical-align: bottom;
+}
+
+.barborder {
+  display: inline-block;
+
+  width: 80%;
+  border-radius: 1000px;
+  border: 2px solid white;
+  z-index: 999;
+}
+.skillfill {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 1000px;
+  background-image: linear-gradient(to right, red, lightgreen);
+}
+.html {
+  width: 90%;
+}
 
 /* end of content */
 

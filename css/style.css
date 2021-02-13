@@ -101,16 +101,30 @@ body {
 }
 nav {
   position: fixed !important;
-  padding: 50px;
+  /* padding: 50px; */
   width: 100%;
   top: 0;
   border-width: 0 0 1px;
   height: 58px;
+  z-index: 999;
+}
+@media screen and (max-width: 768px){
+  .navbar-collapse {
+    width: inherit;
+    background-color: #212529;
+    margin: 0 -10px;
+    padding: 0 20px;
+    z-index: 999;
+  }
+  .container-fluid{
+    padding: 0 10px;
+  }
 }
 /* end of nav */
 
 /* start of content */
 .content {
+  z-index: 1;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -153,6 +167,7 @@ nav {
 .skill-row {
   text-align: right;
   display: inline-block;
+  width: 100%;
 }
 .skill-row > h5 {
   display: inline-block;
@@ -200,6 +215,10 @@ nav {
 .m-skill {
   display: none;
   background-color: white;
+}
+.m-skill img {
+  padding: 15px;
+  margin: 0 auto
 }
 @media screen and (max-width: 768px) {
   .d-skill {

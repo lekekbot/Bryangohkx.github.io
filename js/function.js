@@ -50,7 +50,7 @@ $('a[href*=#]').bind('click', function (e) {
     var scrollToPosition = $(target).offset().top - 58;
     $('html').animate({
         scrollTop: scrollToPosition
-        }, 50, function () {
+    }, 50, function () {
         location.hash = target; //attach the hash (#jumptarget) to the pageurl
     });
     return false;
@@ -61,15 +61,24 @@ $(window).scroll(function () {
     var scrollDistance = $(window).scrollTop();
     // Assign active class to nav links while scolling
     $('.page-section').each(function (i) {
-        if ($(this).offset().top -60 <= scrollDistance) {
+        if ($(this).offset().top - 60 <= scrollDistance) {
             $('.tabs').removeClass('active');
             $('.tabs').eq(i).addClass('active');
         }
     });
 }).scroll();
 
+// pdf thing 
 
-
+function render() {
+    state.pdf.getPage(state.currentPage).then((page) => {
+        var canvas = document.getElementById("pdf_renderer");
+        var ctx = canvas.getContext('2d');
+        var viewport = page.getViewport(state.zoom);
+        canvas.width = viewport.width;
+        canvas.height = viewport.height;
+    });
+}
 
 window.onbeforeunload = function (e) {
     window.onunload = function () {

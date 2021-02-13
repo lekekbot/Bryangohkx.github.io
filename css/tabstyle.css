@@ -1,0 +1,50 @@
+.tab-btns {
+  position: fixed;
+  top: 50%;
+  -webkit-transform: translateY(-90px);
+          transform: translateY(-90px);
+}
+
+.tabs {
+  position: absolute;
+  font-size: 25px;
+  background-color: grey;
+  padding: 2px 7px;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  inline-size: -webkit-max-content;
+  inline-size: -moz-max-content;
+  inline-size: max-content;
+  text-decoration: none;
+  color: white;
+}
+
+.tabs:hover {
+  left: 0;
+  color: white;
+}
+
+.tabs.active {
+  left: 0;
+}
+
+.about {
+  left: -75px;
+  -webkit-transition: left 0.5s;
+  transition: left 0.5s;
+}
+
+.skill {
+  top: 75px;
+  left: -62px;
+  -webkit-transition: left 0.5s;
+  transition: left 0.5s;
+}
+
+.award {
+  top: 150px;
+  left: -92px;
+  -webkit-transition: left 0.5s;
+  transition: left 0.5s;
+}
+/*# sourceMappingURL=tabstyle.css.map */

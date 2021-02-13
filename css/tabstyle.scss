@@ -7,7 +7,6 @@
 .tabs {
     position: absolute;
     font-size: 25px;
-    background-color: grey;
     padding: 2px 7px;
     border-top-right-radius: 25px;
     border-bottom-right-radius: 25px;
@@ -27,17 +26,20 @@
 }
 
 .about {
+    background-color: #0da506;
     left: -75px;
     transition: left 0.5s;
 }
 
 .skill {
+    background-color: #22c3d6;
     top: 75px;
     left: -62px;
     transition: left 0.5s;
 }
 
 .award {
+    background-color: #a6da5b;
     top: 150px;
     left: -92px;
     transition: left 0.5s;

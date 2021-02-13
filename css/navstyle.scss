@@ -47,8 +47,8 @@ $menu-items-loop-offset: $menu-items - 1; // the number of items in the menu
         a {
             color: $background-color;
             display: block;
-            padding-top: 20px;
-            padding-bottom: 20px;
+            // padding-top: 20px;
+            // padding-bottom: 20px;
             text-decoration: none;
 
             &:hover {

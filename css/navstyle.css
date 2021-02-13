@@ -27,8 +27,6 @@
   .nav-item a {
     color: #212529;
     display: block;
-    padding-top: 20px;
-    padding-bottom: 20px;
     text-decoration: none;
   }
   .nav-item a:hover {

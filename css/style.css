@@ -5,6 +5,7 @@ body {
   height: 100%;
   background-color: #4e4e50;
   color: white;
+  padding-top: 58px
 }
 /* start of loadder */
 .loadercontainer {
@@ -96,12 +97,15 @@ body {
 
 /* start of nav */
 #navcontent li {
-  font-size: 25px;
+  font-size: 20px;
 }
 nav {
-  position: fixed;
+  position: fixed !important;
+  padding: 50px;
+  width: 100%;
   top: 0;
   border-width: 0 0 1px;
+  height: 58px;
 }
 /* end of nav */
 
@@ -179,12 +183,15 @@ nav {
   display: none;
   background-color: white;
 }
-@media screen and (max-width: 768px){
+@media screen and (max-width: 768px) {
   .d-skill {
     display: none;
   }
   .m-skill {
     display: block;
+  }
+  .tab-btns {
+    display: none
   }
 }
 

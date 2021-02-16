@@ -9,6 +9,16 @@ function render() {
     });
 }
 
+$(document).ready(function() {
+    // Check if body height is higher than window height :)
+    if ($("body").height() > $(window).height()) {
+    }else{
+        $('.footerrow').css('position', 'fixed')
+        $('.footerrow').css('bottom', 0)
+    }
+    // Check if body width is higher than window width :)
+});
+
 window.onbeforeunload = function (e) {
     window.onunload = function () {
         window.localStorage.clear()

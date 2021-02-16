@@ -67,6 +67,8 @@
             </div>
         </div>
     </nav>
+    <canvas></canvas>
+
     <div class="content">
         <h1>Hello, my name is Bryan Goh</h1>
         <h1>An aspiring software developer</h1>
@@ -78,7 +80,8 @@
     <div class="socialfollow text-center">
         <h4>Follow me on</h4>
         <div class="socialimg-row">
-            <a target="_blank" href="https://www.linkedin.com/in/bryan-goh-4786821b2/"><img src="linkedin.png" alt=""></a>
+            <a target="_blank" href="https://www.linkedin.com/in/bryan-goh-4786821b2/"><img src="linkedin.png"
+                    alt=""></a>
             <a target="_blank" href="#"><img src="facebook.png" alt=""></a>
             <a target="_blank" href="#"><img src="twitter.png" alt=""></a>
             <a target="_blank" href="#"><img src="whatsapp.png" alt=""></a>
@@ -88,8 +91,123 @@
 
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.5/typed.min.js" integrity="sha512-1KbKusm/hAtkX5FScVR5G36wodIMnVd/aP04af06iyQTkD17szAMGNmxfNH+tEuFp3Og/P5G32L1qEC47CZbUQ==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.5/typed.min.js"
+    integrity="sha512-1KbKusm/hAtkX5FScVR5G36wodIMnVd/aP04af06iyQTkD17szAMGNmxfNH+tEuFp3Og/P5G32L1qEC47CZbUQ=="
+    crossorigin="anonymous"></script>
 <script src="js/bootstrap/bootstrap.min.js"></script>
 <script src="js/function.js"></script>
+<script src="js/index.js"></script>
+<script>
+    var canvas = document.querySelector('canvas');
+    canvas.height = window.innerHeight
+    canvas.width = $('body').width();
+    c = canvas.getContext('2d');
+
+    window.addEventListener('resize', function () {
+        canvas.height = window.innerHeight
+        canvas.width = $('body').width();
+        initCanvas();
+    })
+    var mouse = {
+        x: undefined,
+        y: undefined
+    }
+    window.addEventListener('mousemove',
+        function (event) {
+            mouse.x = event.x;
+            mouse.y = event.y;
+            drawCircles();
+        }
+    )
+    window.addEventListener("touchmove",
+        function (event) {
+            let touch = event.touches[0];
+            mouse.x = touch.clientX;
+            mouse.y = touch.clientY - $('nav').height() - $('nav').css('padding-top') - $('nav').css('padding-bottom');
+            drawCircles();
+        }
+    )
+
+    function Circle(x, y, radius, vx, vy, rgb, opacity, birth, life) {
+        this.x = x;
+        this.y = y;
+        this.radius = radius;
+        this.minRadius = radius;
+        this.vx = vx;
+        this.vy = vy;
+        this.birth = birth;
+        this.life = life;
+        this.opacity = opacity;
+
+        this.draw = function () {
+            c.beginPath();
+            c.arc(this.x, this.y, this.radius, Math.PI * 2, false);
+            c.fillStyle = 'rgba(' + rgb + ',' + this.opacity + ')';
+            c.fill();
+        }
+
+        this.update = function () {
+            if (this.x + this.radius > innerWidth || this.x - this.radius < 0) {
+                this.vx = -this.vx;
+            }
+
+            if (this.y + this.radius > innerHeight || this.y - this.radius < 0) {
+                this.vy = -this.vy;
+            }
+
+            this.x += this.vx;
+            this.y += this.vy;
+
+            this.opacity = 1 - (((frame - this.birth) * 1) / this.life);
+
+            if (frame > this.birth + this.life) {
+                for (let i = 0; i < circleArray.length; i++) {
+                    if (this.birth == circleArray[i].birth && this.life == circleArray[i].life) {
+                        circleArray.splice(i, 1);
+                        break;
+                    }
+                }
+            } else {
+                this.draw();
+            }
+        }
+    }
+
+    var circleArray = [];
+
+    function initCanvas() {
+        circleArray = [];
+    }
+
+    var colorArray = [
+        '355,85,80',
+        '9,80,100',
+        '343,81,45'
+    ]
+
+    function drawCircles() {
+        for (let i = 0; i < 6; i++) {
+            let radius = Math.floor(Math.random() * 4) + 2;
+            let vx = (Math.random() * 2) - 1;
+            let vy = (Math.random() * 2) - 1;
+            let spawnFrame = frame;
+            let rgb = colorArray[Math.floor(Math.random() * colorArray.length)];
+            let life = 100;
+            circleArray.push(new Circle(mouse.x, mouse.y, radius, vx, vy, rgb, 1, spawnFrame, life));
+        }
+    }
+
+    var frame = 0;
+    function animate() {
+        requestAnimationFrame(animate);
+        frame += 1;
+        c.clearRect(0, 0, innerWidth, innerHeight);
+        for (let i = 0; i < circleArray.length; i++) {
+            circleArray[i].update();
+        }
+    }
+    initCanvas();
+    animate();
+</script>
 
 </html>

@@ -108,6 +108,12 @@ nav {
   height: 58px;
   z-index: 999;
 }
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
 @media screen and (max-width: 768px) {
   .navbar-collapse {
     width: inherit;
@@ -220,6 +226,7 @@ nav {
   padding: 15px;
   margin: 0 auto;
 }
+
 @media screen and (max-width: 768px) {
   .d-skill {
     display: none;
@@ -346,6 +353,29 @@ nav {
   background-color: rgb(49, 49, 49);
   padding: 5px 15px;
   border-radius: 10000px;
+}
+.project-header{
+  position: relative;
+}
+.project-header  * {
+  display: inline-block;
+}
+
+.project-header > h1 {
+  vertical-align: bottom;
+}
+.project-header > a {
+  right: 20px;
+  bottom: 0;
+  text-decoration: none;
+  background-color: greenyellow;
+  color: black;
+  padding: 8px;
+  position: absolute;
+  transform: translateY(-20%);
+}
+.carousel-item img{
+  margin: 0 auto
 }
 /* end of content */
 
